@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Observable } from 'rxjs';
+import { AuthenticationUser } from '../../models/authentication/authentication-user';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,8 +10,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ToolbarComponent {
   @Output() onToggle: EventEmitter<any> = new EventEmitter<any>();
+
+  user$: Observable<AuthenticationUser | null>;
   
-  onMenuClick() {
-    this.onToggle.emit(null);
+  constructor(private _authenticationService: AuthenticationService) {
+    this.user$ = this._authenticationService.user$;
+  }
+
+  logout(): void {
+    this._authenticationService.logout();
   }
 }

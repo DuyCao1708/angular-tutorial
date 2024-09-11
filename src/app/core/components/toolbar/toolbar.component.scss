@@ -1,3 +1,21 @@
-.example-spacer {
+.toolbar-spacer {
     flex: 1 1 auto;
+}
+
+.user-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #252c58;
+}
+
+.btn-menu.left {
+    margin-right: 10px;
+}
+
+.btn-menu.right {
+    margin-left: 10px;
+}
+
+.menu-content {
+    min-width: 180px;
 }
