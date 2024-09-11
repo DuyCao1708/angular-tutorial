@@ -1,0 +1,17 @@
+<section>
+    <div class="container">
+      <div class="text">
+        <h1>Page not found</h1>
+        <p>This page is not available. Please check the URL or return later.</p>
+        <div class="input-box">
+          <input type="text" [(ngModel)]="url" placeholder="Search..." (keydown.enter)="navigate()">
+          <button (click)="navigate()"><mat-icon>search</mat-icon></button>
+        </div>
+        <ul class="menu">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div><img class="image" src="https://omjsblog.files.wordpress.com/2023/07/errorimg.png" alt=""></div>
+    </div>
+  </section>
