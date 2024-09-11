@@ -2,9 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { authorizationGuard } from '../../core/guards/authorization.guard';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [authorizationGuard],
+    children: [
+      { path: '', component: DashboardComponent },
+    ]
+  },
 ]
 
 @NgModule({
