@@ -1,0 +1,7 @@
+<button (click)="loaderService.show()" style="z-index: 999999999; position: relative">on</button>
+<button (click)="loaderService.hide()" style="z-index: 999999999; position: relative">off</button>
+
+
+<div class="overlay" *ngIf="enable$ | async">
+    <span class="spinner"></span>
+</div>
