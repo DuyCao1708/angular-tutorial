@@ -10,7 +10,7 @@ import { LoaderService } from '../../services/loader.service';
 export class LoaderComponent {
   enable$: Observable<boolean>;
 
-  constructor(public loaderService: LoaderService) {
+  constructor(private loaderService: LoaderService) {
     this.enable$ = this.loaderService.spinner$
     .pipe(
       map((value: number) => !!value)
