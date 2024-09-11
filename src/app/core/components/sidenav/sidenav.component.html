@@ -1,0 +1,9 @@
+<mat-sidenav-container autosize [hasBackdrop]="mediaService.isMobile">
+    <mat-sidenav [mode]="mediaService.isMobile ? 'over' : 'side'" fixedInViewport >
+        hihi
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

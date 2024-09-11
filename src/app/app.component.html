@@ -1,3 +1,5 @@
-<app-loader></app-loader>
+<app-sidenav #sidenav>
+    <app-toolbar (onToggle)="sidenav.toggle()"></app-toolbar>
+</app-sidenav>
 
-<button (click)="callApi()">fetch</button>
+<app-loader></app-loader>
