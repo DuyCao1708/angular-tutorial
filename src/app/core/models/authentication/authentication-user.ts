@@ -1,3 +1,4 @@
 export interface AuthenticationUser {
-    name: string
+    name: string;
+    roles: string[];
 }

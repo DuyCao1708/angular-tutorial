@@ -23,7 +23,8 @@ export class AuthenticationService {
 
   login(): void {
     const user: AuthenticationUser = {
-      name: 'Duy Cao'
+      name: 'Duy Cao',
+      roles: ['GetEmployees']
     }
 
     this.setUser(user);
