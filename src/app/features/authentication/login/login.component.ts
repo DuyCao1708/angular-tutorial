@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { filter, tap } from 'rxjs';
+import { IAuthenticationUser } from '../../../core/models/authentication/authentication-user';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,14 @@ export class LoginComponent {
           this._returnUrl = params.get('returnUrl');
         }
       })
+
+    this._authenticationService.user$
+      .pipe(
+        filter((user: IAuthenticationUser | null): boolean => !!user),
+        tap(_ => {
+          _router.navigate(['/dashboard'])
+        })
+      ).subscribe();
   }
 
   login(): void {

@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$success: mat.define-theme(
+  (
+    color: (
+        theme-type: light,
+        primary: mat.$green-palette,
+    ),
+  )
+);
+
+$error: mat.define-theme(
+  (
+    color: (
+        theme-type: light,
+        primary: mat.$red-palette,
+    ),
+  )
+);
+
+$warn: mat.define-theme(
+  (
+    color: (
+        theme-type: light,
+        primary: mat.$orange-palette,
+    ),
+  )
+);
+
+@mixin theme-color($color-theme, $shade) {
+  color: mat.get-theme-color($color-theme, primary, $shade) !important; 
+}
+
+.theme.success {
+  @include theme-color($success, 50);
+  @include mat.all-component-colors($success);
+}
+
+.theme.error {
+  @include theme-color($error, 50);
+  @include mat.all-component-colors($error);
+}
+
+.theme.warn {
+  @include theme-color($warn, 50);
+  @include mat.all-component-colors($warn);
+}
+

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { Observable, ReplaySubject } from 'rxjs';
-import { AuthenticationUser } from '../models/authentication/authentication-user';
+import { Observable, ReplaySubject, shareReplay } from 'rxjs';
+import { IAuthenticationUser } from '../models/authentication/authentication-user';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
@@ -10,8 +10,8 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AuthenticationService {
 
-  private _userSubject: ReplaySubject<AuthenticationUser | null> = new ReplaySubject<AuthenticationUser | null>(1);
-  user$: Observable<AuthenticationUser | null> = this._userSubject.asObservable();
+  private _userSubject: ReplaySubject<IAuthenticationUser | null> = new ReplaySubject<IAuthenticationUser | null>(1);
+  user$: Observable<IAuthenticationUser | null> = this._userSubject.asObservable().pipe(shareReplay(1));
 
   localStorage: any;
 
@@ -22,7 +22,7 @@ export class AuthenticationService {
    }
 
   login(): void {
-    const user: AuthenticationUser = {
+    const user: IAuthenticationUser = {
       name: 'Duy Cao',
       roles: ['GetEmployees']
     }
@@ -36,15 +36,15 @@ export class AuthenticationService {
     this._router.navigateByUrl('/');
   }
 
-  getAuthUser(): AuthenticationUser | null {
+  getAuthUser(): IAuthenticationUser | null {
     if (this.localStorage) {
       const user = this.localStorage.getItem(environment.userKey);
-      if (user) return JSON.parse(user) as AuthenticationUser;
+      if (user) return JSON.parse(user) as IAuthenticationUser;
       else return null;
     } else return null;
   }
   
-  refreshUser(user: AuthenticationUser | null): void {
+  refreshUser(user: IAuthenticationUser | null): void {
     if (!user) {
       this._userSubject.next(null);
     } else {
@@ -53,7 +53,7 @@ export class AuthenticationService {
   }
 
   //#region Private Methods
-  private setUser(user: AuthenticationUser): void {
+  private setUser(user: IAuthenticationUser): void {
     this.localStorage.setItem(environment.userKey, JSON.stringify(user));
     this._userSubject.next(user);
   }

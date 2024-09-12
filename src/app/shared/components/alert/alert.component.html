@@ -1,0 +1,51 @@
+<h2 mat-dialog-title class="theme {{init.type}}">
+    {{init.title}}
+</h2>
+
+<mat-dialog-content>
+    <ng-container [ngSwitch]="init.type">
+        <ng-container *ngSwitchCase="'error'">
+            <div class="sa">
+                <div class="sa-error">
+                    <div class="sa-error-x">
+                        <div class="sa-error-left"></div>
+                        <div class="sa-error-right"></div>
+                    </div>
+                    <div class="sa-error-placeholder"></div>
+                    <div class="sa-error-fix"></div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'success'">
+            <div class="sa">
+                <div class="sa-success">
+                    <div class="sa-success-tip"></div>
+                    <div class="sa-success-long"></div>
+                    <div class="sa-success-placeholder"></div>
+                    <div class="sa-success-fix"></div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'warn'">
+            <div class="sa">
+                <div class="sa-warning">
+                    <div class="sa-warning-body"></div>
+                    <div class="sa-warning-dot"></div>
+                </div>
+            </div>
+        </ng-container>
+    </ng-container>
+
+    <div>{{init.message}}</div>
+</mat-dialog-content>
+
+<mat-dialog-actions [align]="'end'">
+    <button mat-button
+    class="theme {{init.type}}"
+    *ngIf="init.action"
+    (click)="init.action()" [mat-dialog-close]="true">Confirm</button>
+
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

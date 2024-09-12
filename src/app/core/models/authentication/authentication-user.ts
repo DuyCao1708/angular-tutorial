@@ -1,4 +1,4 @@
-export interface AuthenticationUser {
+export interface IAuthenticationUser {
     name: string;
     roles: string[];
 }
