@@ -1,22 +1,24 @@
-:host {
-    display: block;
-    background: #fff;
-}
-
-mat-dialog-content {
+.alert-body {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.sa {
+h4.alert-title {
+    padding: 20px 0 0 20px
+}
+
+.alert-action {
+    display: flex;
+    justify-content: end;
+    padding: 30px 20px 10px 0;
+}
+
+.alert-notif {
     width: 100px;
     height: 100px;
-    padding: 26px;
     background-color: #fff;
-    display: flex;
-    justify-content: center;
 
     &-success {
         border-radius: 50%;
@@ -368,48 +370,57 @@ mat-dialog-content {
 }
 
 @keyframes animateErrorIcon {
-	0% {
-		transform: rotateX(100deg);
-		opacity: 0;
-	}
-	100% {
-		transform: rotateX(0deg);
-		opacity: 1;
-	}
+    0% {
+        transform: rotateX(100deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
 }
 
 @keyframes animateXLeft {
-	0%, 65% {
-		left: 82px;
-		top: 95px;
-		width: 0;
-	}
-	84% {
-		left: 14px;
-		top: 33px;
-		width: 47px;
-	}
-	100% {
-		left: 17px;
-		top: 37px;
-		width: 47px;
-	}
+
+    0%,
+    65% {
+        left: 82px;
+        top: 95px;
+        width: 0;
+    }
+
+    84% {
+        left: 14px;
+        top: 33px;
+        width: 47px;
+    }
+
+    100% {
+        left: 17px;
+        top: 37px;
+        width: 47px;
+    }
 }
 
 @keyframes animateXRight {
-	0%, 65% {
-		right: 82px;
-		top: 95px;
-		width: 0;
-	}
-	84% {
-		right: 14px;
-		top: 33px;
-		width: 47px;
-	}
-	100% {
-		right: 16px;
-		top: 37px;
-		width: 47px;
-	}
+
+    0%,
+    65% {
+        right: 82px;
+        top: 95px;
+        width: 0;
+    }
+
+    84% {
+        right: 14px;
+        top: 33px;
+        width: 47px;
+    }
+
+    100% {
+        right: 16px;
+        top: 37px;
+        width: 47px;
+    }
 }

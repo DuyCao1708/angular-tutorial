@@ -1,19 +1,19 @@
-import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { map, Observable } from 'rxjs';
 import { AuthenticationService } from '../services/authentication.service';
 import { inject } from '@angular/core';
 import { IAuthenticationUser } from '../models/authentication/authentication-user';
 import { CoreService } from '../services/core.service';
 import { AlertType } from '../models/shared/alert-init';
 
-export const authenticationGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> => {
+export const authenticationGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> => {
   const authenticationService: AuthenticationService = inject(AuthenticationService);
   const coreService: CoreService = inject(CoreService);
   const router: Router = inject(Router);
 
   return authenticationService.user$
     .pipe(
-      map((user: IAuthenticationUser | null): boolean => {
+      map((user: IAuthenticationUser | null): boolean | UrlTree => {
         const url = state.url.split('?')[0];
         let valid: boolean = false;
         switch(url) {
@@ -21,12 +21,10 @@ export const authenticationGuard: CanActivateFn = (route: ActivatedRouteSnapshot
           default: break;
         }
 
-        return valid;
-      }),
-      tap((valid: boolean) => {
-        if (!valid) {
-          router.navigate(['/authentication/login']);
-          coreService.alert({type: AlertType.Error, title: 'Error', message: 'Your account is not allowed to access this page!'});
+        if (valid) return true;
+        else {
+          coreService.alert({ type: AlertType.Error, title: 'Error', message: 'Your account is not allowed to access this page!' });
+          return router.createUrlTree(['/authentication/login'], { queryParams: { returnUrl: state.url } });
         }
       })
     )

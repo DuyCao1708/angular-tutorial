@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './features/home/not-found/not-found.component';
 import { LoginComponent } from './features/authentication/login/login.component';
 

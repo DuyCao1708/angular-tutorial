@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -23,7 +24,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatMenuModule
+    MatMenuModule,
+    SharedModule
   ],
   exports: [
     LoaderComponent,

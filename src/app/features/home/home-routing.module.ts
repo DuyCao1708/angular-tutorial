@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     runGuardsAndResolvers: 'always',
-    canActivate: [authorizationGuard],
+    canActivateChild: [authorizationGuard],
     children: [
       { path: '', component: DashboardComponent },
     ]

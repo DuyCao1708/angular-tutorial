@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import { AuthenticationService } from './core/services/authentication.service';
 export class AppComponent {
   title = 'client';
 
-  constructor(private _authenticationSerivce: AuthenticationService) { }
+  constructor(private _authenticationSerivce: AuthenticationService,) {}
 
   ngOnInit(): void {
     const authUser = this._authenticationSerivce.getAuthUser();

@@ -11,6 +11,6 @@ export class DashboardComponent {
   constructor(private _coreService: CoreService) {}
 
   alert() {
-    this._coreService.alert({type: AlertType.Error, title: 'hihi', message: 'hehe', action: () => {}});
+    this._coreService.alert({type: AlertType.Warn, title: 'hihi', message: 'hehe', action: () => {}});
   }
 }

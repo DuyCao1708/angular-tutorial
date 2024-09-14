@@ -1,13 +1,15 @@
-import { Component, inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
 import { IAlertInit } from '../../../core/models/shared/alert-init';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss'
+  styleUrl: './alert.component.scss',
 })
 export class AlertComponent {
-  init: IAlertInit = inject(MAT_DIALOG_DATA) as IAlertInit;
+  init: IAlertInit;
+
+  constructor(public bsModalRef: BsModalRef) {}
 }

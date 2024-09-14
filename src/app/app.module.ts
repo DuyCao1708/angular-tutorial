@@ -7,7 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { CoreModule } from './core/core.module';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { loaderInterceptor } from './core/interceptors/loader.interceptor';
-import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +17,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     provideClientHydration(),
